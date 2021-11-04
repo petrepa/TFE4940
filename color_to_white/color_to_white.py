@@ -1,7 +1,28 @@
 from PIL import Image
 
+
+import argparse
+import os
+
+# Add arguments for command line usage
+parser = argparse.ArgumentParser(description='Convert a RGBs in an image to white. Leaving the black background')
+
+parser.add_argument('-t', '--target', help='the directory for the target image file', required=True)
+parser.add_argument('-d', '--destination', help='the name of your wanted destianation folder for the images', default='result_images')
+parser.add_argument('-p', '--prefix', help='the prefix of your resulting images', default='frame')
+
+args = parser.parse_args()
+
+# Make variables from the parser arguments
+target_path = args.target
+dir_path = args.destination
+prefix = args.prefix
+
+os.mkdir(dir_path)
+
+
 # Separate RGB arrays
-im = Image.open('test.png')
+im = Image.open(target_path)
 R, G, B = im.convert('RGB').split()
 r = R.load()
 g = G.load()
@@ -16,4 +37,4 @@ for i in range(w):
 
 # Merge just the R channel as all channels
 im = Image.merge('RGB', (R, R, R))
-im.save("black_and_white.png")
+im.save('./' + dir_path + '/' + prefix +'.jpg')
