@@ -20,21 +20,28 @@ prefix = args.prefix
 
 os.mkdir(dir_path)
 
+prefix_i=0
 
-# Separate RGB arrays
-im = Image.open(target_path)
-R, G, B = im.convert('RGB').split()
-r = R.load()
-g = G.load()
-b = B.load()
-w, h = im.size
+# go through all of the files in the target path
+for filename in os.listdir(target_path):
+    if filename.endswith(".jpg"): #only does the action on jpgs
 
-# Convert non-black pixels to white
-for i in range(w):
-    for j in range(h):
-        if(r[i, j] != 0 or g[i, j] != 0 or b[i, j] != 0):
-            r[i, j] = 255 # Just change R channel
+        # Separate RGB arrays
+        im = Image.open(target_path + '/' + filename)
+        R, G, B = im.convert('RGB').split()
+        r = R.load()
+        g = G.load()
+        b = B.load()
+        w, h = im.size
 
-# Merge just the R channel as all channels
-im = Image.merge('RGB', (R, R, R))
-im.save('./' + dir_path + '/' + prefix +'.jpg')
+        # Convert non-black pixels to white
+        for i in range(w):
+            for j in range(h):
+                if(r[i, j] != 0 or g[i, j] != 0 or b[i, j] != 0):
+                    r[i, j] = 255 # Just change R channel
+
+        # Merge just the R channel as all channels
+        im = Image.merge('RGB', (R, R, R))
+        im.save('./' + dir_path + '/' + prefix + '_' + str(prefix_i) + '.jpg')
+        
+        prefix_i+=1
