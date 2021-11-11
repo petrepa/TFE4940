@@ -7,8 +7,8 @@ Elektronisk systemdesign og innovasjon, masteroppgave
 | Video # | Title                                  | Foreground       | Background | YouTube URL                  |
 |---------|----------------------------------------|------------------|------------|------------------------------|
 | 1       | FG: Showing Object - BG: Complex       | Showing Object   | Complex    | https://youtu.be/A6eBLW0Wioo |
-| 2       | FG: Showing Object - BG: Window        | Showing Object   | Window     | |
-| 3       | FG: Showing Object - BG: White Wall    | Showing Object   | White Wall | |
+| 2       | FG: Showing Object - BG: Window        | Showing Object   | Window     | https://youtu.be/j9HAYcmaHfo |
+| 3       | FG: Showing Object - BG: White Wall    | Showing Object   | White Wall | https://youtu.be/midiWH7B3Q4 |
 | 4       | FG: Rocking Dark - BG: Complex         | Rocking Dark     | Complex    | https://youtu.be/Gp4jLwgwWYM |
 | 5       | FG: Rocking Dark - BG: Window          | Rocking Dark     | Window     | https://youtu.be/SxBDid4gl3A |
 | 6       | FG: Rocking Dark - BG: White Wall      | Rocking Dark     | White Wall | https://youtu.be/toRZK4Zd2zE |
