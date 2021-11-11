@@ -22,8 +22,6 @@ args = parser.parse_args()
 img_path = args.input
 truth_path = args.truth
 
-
-
 def image_to_numerical(image):
     img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
     print('Ran funciton on image "%s"' % (image))
@@ -40,7 +38,18 @@ def intersection_over_union(array1, array2):
         union = np.logical_or(array1, array2)
         iou_score = np.sum(intersection) / np.sum(union)
         print('IoU is %s' % (iou_score))
+
+        return iou_score
     except:
         console.print('!! intersection_over_union function failed !!','\n\nAre you sure the images have the identical size?', style="bold red")
 
+def dice_coeff(array1, array2):
+    J = intersection_over_union(array1, array2)
+    S = (2 * J)/(1+J)
+
+    print('Dice Coefficient is %s' % (S))
+    
+    return S
+
 intersection_over_union(img_array, truth_array)
+dice_coeff(img_array, truth_array)
