@@ -18,3 +18,11 @@ Elektronisk systemdesign og innovasjon, masteroppgave
 | 10      | FG: Counting Fingers - BG: Complex     | Counting Fingers | Complex    | https://youtu.be/ItD8V6YHuoE |
 | 11      | FG: Counting Fingers - BG: Window      | Counting Fingers | Window     | https://youtu.be/p_YCR-OCmQo |
 | 12      | FG: Counting Fingers - BG: White Wall  | Counting Fingers | White Wall | https://youtu.be/4C0TVFPapGU |
+
+
+# Forms Questionnaire video list
+```
+(base) ➜  list_randomizer git:(misc_help_code) python list_randomizer.py
+Original list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Shuffled list: [10, 9, 3, 7, 6, 2, 1, 12, 8, 4, 11, 5]
+```
