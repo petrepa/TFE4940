@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import argparse
 import sys
+import sklearn
 from rich.console import Console
 
 console = Console()
@@ -52,13 +53,16 @@ def dice_coeff(array1, array2):
 
 def pixel_accuracy(array1, array2):
     try:
-        TPN_inverted = npp.invert(np.logical_xor(array1, array2))
-        TPN = np.logical_not(TPN_inverted).astype(int)
-        FPN = np.logical_xor(array1, array2)
+        i = 0
 
-        accuracy = np.sum(TPN)/(np.sum(TPN) + np.sum(FPN))
+        TP = np.sum(np.logical_and(array1, array2))
+        TN = np.sum(np.logical_not(np.logical_or(array1, array2)))
+        FPN = np.sum(np.logical_xor(array1, array2))
+        TPN = np.sum(np.logical_not(np.logical_xor(array1, array2)))
 
-        return accuracy
+        accuracy = (TP + TN)/(TP + TN + FPN)
+
+        return TP, TN, FPN, accuracy, TPN
     except:
         console.print('!! pixel_accuracy function failed !!','\n\nAre you sure the images have the identical size?', style="bold red")
 
@@ -68,5 +72,5 @@ print('IoU is %s' % (IoU))
 DC = dice_coeff(img_array, truth_array)
 print('DC is %s' % (DC))
 
-PA = pixel_accuracy(img_array, truth_array)
-print('PA is %s' % (PA))
+TP, TN, FPN, accuracy, TPN = pixel_accuracy(img_array, truth_array)
+print('PA: %s - TP is %s, TN is %s, FPN is %s, TPN is %s, TP + TN is %s' % (accuracy, TP, TN, FPN, TPN, (TP+TN)))
