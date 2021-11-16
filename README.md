@@ -26,3 +26,9 @@ Elektronisk systemdesign og innovasjon, masteroppgave
 Original list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 Shuffled list: [10, 9, 3, 7, 6, 2, 1, 12, 8, 4, 11, 5]
 ```
+
+# Workflow
+1. Find video
+2. Convert to images
+3. Convert images to black and white 
+4. Do analysis on array
