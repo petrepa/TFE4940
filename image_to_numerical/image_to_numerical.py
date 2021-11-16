@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import argparse
 import sys
-import sklearn
 from rich.console import Console
 
 console = Console()
@@ -16,17 +15,38 @@ parser = argparse.ArgumentParser(description='Convert a black and white image to
 
 parser.add_argument('-i', '--input', help='the image file', required=True)
 parser.add_argument('-t', '--truth', help='the truth table image file', required=False)
+parser.add_argument('-d', '--destination', help='the directory where the binary black and white images from the input will be saved', required=False)
 
 args = parser.parse_args()
 
 # Make variables from the parser arguments
 img_path = args.input
 truth_path = args.truth
+dest_path = args.destination
 
 def image_to_numerical(image):
     img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
+    print('Ran image_to_numerical on image "%s"' % (image))
+    
+    #convert the grayscale image to a binary black and white image
+    (thresh, blackAndWhiteImage) = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY)
+
+    return(blackAndWhiteImage)
+
+def save_image(image):
+    img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
     print('Ran funciton on image "%s"' % (image))
-    return(img)
+    
+    #convert the grayscale image to a binary black and white image
+    (thresh, blackAndWhiteImage) = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY)
+
+    #save the image
+    filename_long = str(image).rpartition('/')
+    filename = filename_long[2]
+
+    cv2.imwrite(filename, blackAndWhiteImage)
+    print("Filename: " + filename)
+    return True
 
 img_array = image_to_numerical(img_path)
 
