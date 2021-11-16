@@ -17,7 +17,8 @@ video_path = args.video
 dir_path = args.destination
 prefix = args.prefix
 
-os.mkdir(dir_path)
+if not os.path.exists(dir_path):
+    os.mkdir(dir_path)
 
 # Opens the Video file from the parsed video file
 cap= cv2.VideoCapture(video_path)
