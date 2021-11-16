@@ -42,7 +42,7 @@ def save_image(image):
 
     #save the image
     filename_long = str(image).rpartition('/')
-    filename = filename_long[2]
+    filename = dest_path + '/' + filename_long[2]
 
     cv2.imwrite(filename, blackAndWhiteImage)
     print("Filename: " + filename)
@@ -94,3 +94,5 @@ print('DC is %s' % (DC))
 
 TP, TN, FPN, accuracy, TPN = pixel_accuracy(img_array, truth_array)
 print('PA: %s - TP is %s, TN is %s, FPN is %s, TPN is %s, TP + TN is %s' % (accuracy, TP, TN, FPN, TPN, (TP+TN)))
+
+save_image(img_path)
