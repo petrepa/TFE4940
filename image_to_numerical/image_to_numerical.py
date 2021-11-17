@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import argparse
 import sys
-import sklearn
+import csv
 from rich.console import Console
 
 console = Console()
@@ -26,12 +26,19 @@ truth_path = args.truth
 def image_to_numerical(image):
     img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
     print('Ran funciton on image "%s"' % (image))
-    return(img)
+    
+    #convert the grayscale image to a binary black and white image
+    (thresh, blackAndWhiteImage) = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY)
 
-img_array = image_to_numerical(img_path)
+    #save the image
+    filename_long = str(image).rpartition('/')
+    filename = dest_path + '/' + filename_long[2]
 
-if args.truth is not None:
-    truth_array = image_to_numerical(truth_path)
+    cv2.imwrite(filename, blackAndWhiteImage)
+    print("Filename: " + filename)
+    return filename_long[2]
+
+
 
 def intersection_over_union(array1, array2):
     try:
@@ -66,11 +73,31 @@ def pixel_accuracy(array1, array2):
     except:
         console.print('!! pixel_accuracy function failed !!','\n\nAre you sure the images have the identical size?', style="bold red")
 
-IoU = intersection_over_union(img_array, truth_array)
-print('IoU is %s' % (IoU))
 
-DC = dice_coeff(img_array, truth_array)
-print('DC is %s' % (DC))
+def write_to_csv():
+    row_value = main()
 
-TP, TN, FPN, accuracy, TPN = pixel_accuracy(img_array, truth_array)
-print('PA: %s - TP is %s, TN is %s, FPN is %s, TPN is %s, TP + TN is %s' % (accuracy, TP, TN, FPN, TPN, (TP+TN)))
+    with open("objective_measures.csv", 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(row_value)
+
+def main():
+    img_array = image_to_numerical(img_path)
+
+    if args.truth is not None:
+        truth_array = image_to_numerical(truth_path)
+
+    IoU = intersection_over_union(img_array, truth_array)
+    print('IoU is %s' % (IoU))
+
+    DC = dice_coeff(img_array, truth_array)
+    print('DC is %s' % (DC))
+
+    TP, TN, FPN, PA, TPN = pixel_accuracy(img_array, truth_array)
+    print('PA: %s - TP is %s, TN is %s, FPN is %s, TPN is %s, TP + TN is %s' % (PA, TP, TN, FPN, TPN, (TP+TN)))
+
+    filename = save_image(img_path)
+
+    return filename, IoU, DC, PA, TP, TN, FPN
+
+write_to_csv()
