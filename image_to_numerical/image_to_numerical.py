@@ -3,6 +3,7 @@ import numpy as np
 import argparse
 import sys
 import csv
+import os
 from rich.console import Console
 
 console = Console()
@@ -24,6 +25,11 @@ args = parser.parse_args()
 img_path = args.input
 truth_path = args.truth
 dest_path = args.destination
+
+def get_filename():
+    #return the filename of the image
+    filename_long = str(img_path).rpartition('/')
+    return filename_long[2]
 
 def image_to_numerical(image):
     img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
@@ -87,8 +93,18 @@ def pixel_accuracy(array1, array2):
 
 def write_to_csv():
     row_value = main()
+    csv_filename = get_filename()
+    #complete filename of csv file with file type ending
+    csv_fn = str(csv_filename).strip('.jpg') + '.csv'
 
-    with open("objective_measures.csv", 'a', newline='') as file:
+    # if the csv file doesn't already exist, make it and write the header
+    if not os.path.isfile(csv_fn):
+        with open(csv_fn, 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['filename','Iou','DC','PA','TP','TN','FPN'])
+
+    # append the new data to the file
+    with open(csv_fn, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(row_value)
 
@@ -112,3 +128,5 @@ def main():
     return filename, IoU, DC, PA, TP, TN, FPN
 
 write_to_csv()
+
+
