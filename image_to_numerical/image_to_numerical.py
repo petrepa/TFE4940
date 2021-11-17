@@ -16,14 +16,25 @@ parser = argparse.ArgumentParser(description='Convert a black and white image to
 
 parser.add_argument('-i', '--input', help='the image file', required=True)
 parser.add_argument('-t', '--truth', help='the truth table image file', required=False)
+parser.add_argument('-d', '--destination', help='the directory where the binary black and white images from the input will be saved', required=False)
 
 args = parser.parse_args()
 
 # Make variables from the parser arguments
 img_path = args.input
 truth_path = args.truth
+dest_path = args.destination
 
 def image_to_numerical(image):
+    img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
+    print('Ran image_to_numerical on image "%s"' % (image))
+    
+    #convert the grayscale image to a binary black and white image
+    (thresh, blackAndWhiteImage) = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY)
+
+    return(blackAndWhiteImage)
+
+def save_image(image):
     img = cv2.imread(image, 0) # read image as grayscale. Set second parameter to 1 if rgb is required 
     print('Ran funciton on image "%s"' % (image))
     
@@ -76,7 +87,6 @@ def pixel_accuracy(array1, array2):
 
 def write_to_csv():
     row_value = main()
-<<<<<<< Updated upstream
 
     with open("objective_measures.csv", 'a', newline='') as file:
         writer = csv.writer(file)
@@ -102,30 +112,3 @@ def main():
     return filename, IoU, DC, PA, TP, TN, FPN
 
 write_to_csv()
-=======
-
-    with open("objective_measures.csv", 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(row_value)
-
-def main():
-    img_array = image_to_numerical(img_path)
-
-    if args.truth is not None:
-        truth_array = image_to_numerical(truth_path)
-
-    IoU = intersection_over_union(img_array, truth_array)
-    print('IoU is %s' % (IoU))
-
-    DC = dice_coeff(img_array, truth_array)
-    print('DC is %s' % (DC))
-
-    TP, TN, FPN, PA, TPN = pixel_accuracy(img_array, truth_array)
-    print('PA: %s - TP is %s, TN is %s, FPN is %s, TPN is %s, TP + TN is %s' % (PA, TP, TN, FPN, TPN, (TP+TN)))
-
-    filename = save_image(img_path)
-
-    return filename, IoU, DC, PA, TP, TN, FPN
-
-write_to_csv()
->>>>>>> Stashed changes
