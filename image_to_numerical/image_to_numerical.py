@@ -76,6 +76,7 @@ def pixel_accuracy(array1, array2):
 
 def write_to_csv():
     row_value = main()
+<<<<<<< Updated upstream
 
     with open("objective_measures.csv", 'a', newline='') as file:
         writer = csv.writer(file)
@@ -101,3 +102,30 @@ def main():
     return filename, IoU, DC, PA, TP, TN, FPN
 
 write_to_csv()
+=======
+
+    with open("objective_measures.csv", 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(row_value)
+
+def main():
+    img_array = image_to_numerical(img_path)
+
+    if args.truth is not None:
+        truth_array = image_to_numerical(truth_path)
+
+    IoU = intersection_over_union(img_array, truth_array)
+    print('IoU is %s' % (IoU))
+
+    DC = dice_coeff(img_array, truth_array)
+    print('DC is %s' % (DC))
+
+    TP, TN, FPN, PA, TPN = pixel_accuracy(img_array, truth_array)
+    print('PA: %s - TP is %s, TN is %s, FPN is %s, TPN is %s, TP + TN is %s' % (PA, TP, TN, FPN, TPN, (TP+TN)))
+
+    filename = save_image(img_path)
+
+    return filename, IoU, DC, PA, TP, TN, FPN
+
+write_to_csv()
+>>>>>>> Stashed changes
