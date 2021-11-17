@@ -93,10 +93,11 @@ def pixel_accuracy(array1, array2):
 
 def write_to_csv():
     row_value = main()
-    
+
     #complete filename of csv file with file type ending
     csv_filename = str(get_filename()).rpartition('_fg')
-    csv_fn = csv_filename[0] + '.csv'
+    
+    csv_fn = './results/' + csv_filename[0] + '.csv'
 
     # if the csv file doesn't already exist, make it and write the header
     if not os.path.isfile(csv_fn):
