@@ -26,6 +26,9 @@ img_path = args.input
 truth_path = args.truth
 dest_path = args.destination
 
+if not os.path.exists(dest_path):
+    os.mkdir(dest_path)
+
 def get_filename():
     #return the filename of the image
     filename_long = str(img_path).rpartition('/')
@@ -132,3 +135,4 @@ def main():
 write_to_csv()
 
 
+save_image(img_path)
