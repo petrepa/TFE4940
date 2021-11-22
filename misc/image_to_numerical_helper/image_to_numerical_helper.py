@@ -16,9 +16,17 @@ truth_path = args.truth
 dest_path = args.destination
 
 # for each of the files in the given directory, run the command
+# for filename in os.listdir(input_path):
+    
+#     if not os.path.exists(dest_path):
+#         os.mkdir(dest_path)
+    
+
+#     os.system('python ../../image_to_numerical/image_to_numerical.py -i ' + str(input_path) + str(filename) + ' -t ' + str(input_path) + str(filename) + ' -d ' + str(dest_path))
+
+i = 0
+
 for filename in os.listdir(input_path):
-    
-    if not os.path.exists(dest_path):
-        os.mkdir(dest_path)
-    
-    os.system('python ../../image_to_numerical.py -i ' + str(input_path) + str(filename) + ' -t ' + str(input_path) + str(filename) + ' -d ' + str(dest_path))
+    truth_filename = os.listdir(truth_path)
+    os.system('python ../../image_to_numerical/image_to_numerical.py -i ' + str(input_path) + str(filename) + ' -t ' + str(input_path) + str(truth_filename[i]) + ' -d ' + str(dest_path))
+    i += 1
