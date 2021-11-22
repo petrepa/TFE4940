@@ -15,6 +15,7 @@ dir_path = args.directory
 # for each of the files in the given directory, run the command
 for filename in os.listdir(dir_path):
     
+    # make the directory for where the processed images should be placed if its not already existing
     if not os.path.exists('../../media/images/processed/' + str(filename).replace('.mp4','')):
         os.mkdir('../../media/images/processed/' + str(filename).replace('.mp4',''))
     
