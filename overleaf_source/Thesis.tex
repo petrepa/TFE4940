@@ -1,0 +1,47 @@
+\documentclass[10pt,b5paper,oneside,openright]{book}
+\usepackage{config}
+
+\addbibresource{bib/bibliography.bib}
+
+\input{glossary} 
+
+
+\begin{document}
+\frontmatter
+\pagestyle{plain}
+\begingroup
+\let\cleardoublepage\clearpage
+\input{tex/01-abstract}
+\input{tex/02-samandrag}
+\tableofcontents \clearpage
+\listoftables    \clearpage
+\listoffigures   \clearpage
+% \listoftodos     \clearpage
+\endgroup
+
+\printglossary[type=\acronymtype] % Print acronyms
+
+
+\mainmatter
+\pagestyle{headings}
+\input{tex/1-introduction}
+
+\input{tex/2-background}
+
+\input{tex/3-system_design}
+
+\input{tex/4-results}
+
+\input{tex/5-discussion}
+
+\input{tex/6-conclusion}
+
+\printbibliography[heading=bibintoc,title={References}]
+
+\appendix
+\input{tex/A-model}
+\input{tex/A-videos}
+
+\backmatter
+ 
+\end{document}
