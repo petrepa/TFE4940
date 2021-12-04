@@ -34,7 +34,7 @@ In the coming sections we go through how we designed a system which tried to tes
 
 
 \section{Video setup}
-We will create a system consisting of several parts. The basic construction will be set of test videos in front of a green screen (figure \ref{fig:videos}a), where we try to replicate situations which we assume could represent some real world usage. The resulting video will be edited using chroma key compositing to remove the background (figure \ref{fig:videos}b). Further on, the video will be inserted onto different kind of background videos (figure \ref{fig:videos}c). This video will finally be processed by our machine learning based foreground extractor, which will output our segmented silhouette extraction (figure \ref{fig:videos}d). 
+We will create a system consisting of several parts. The basic construction will be set of foreground videos in front of a green screen (figure \ref{fig:videos}a), where we try to create situations which we imagine could reflect some real world usage. The resulting video will be edited using chroma key compositing to remove the background (figure \ref{fig:videos}b). Further on, the video will be inserted onto different kind of background videos (figure \ref{fig:videos}c). This video will finally be processed by our machine learning based foreground extractor, which will output our segmented silhouette extraction (figure \ref{fig:videos}d). 
 
 \begin{figure}[H]
   \centering
@@ -43,11 +43,11 @@ We will create a system consisting of several parts. The basic construction will
   \label{fig:videos}
 \end{figure}
 
-We will create three different backgrounds, described in \autoref{sec:backgrounds}, along with four different type of foreground videos, described in \autoref{sec:foregrounds}. By combining the background and foreground videos we will have a total of twelve (12) videos to run our objective and subjective analysis. Each video will have a duration of ten (10) seconds.
+We will create three different backgrounds, described in \autoref{sec:backgrounds}, along with four different type of foreground videos, described in \autoref{sec:foregrounds}. By combining the background and foreground videos we will have a total of twelve (12) videos to run our objective and subjective analysis. Each video will have a duration of ten (10) seconds filmed at 30 fps. This will result in each video having 300 frames.
 
 \subsection{Backgrounds}\label{sec:backgrounds}
 
-An on-site shot of each background shot can be found in \autoref{cha:appendix-backgrounds}. Each of the background shots in the following section has been taken from frame 150 of the 300 frames (10 second 30 fps) video.
+An on-site shot of each background shot can be found in \autoref{cha:appendix-backgrounds}. Each of the background shots in the following section has been taken from frame 150 of the 300 frames video.
 
 \subsubsection{Simple white wall}
 A simple white wall with typical hall way lighting was selected to try to give the algorithm a ''simple'' task where the foreground would be in stark contrast to the background.
@@ -104,7 +104,7 @@ This foreground was constructed to evaluate how well the machine learning algori
 
 
 \subsubsection{Person wearing a light clothing rocking back and forth}
-See how well the algorithm performs on a person wearing light coloured clothing.
+See how well the algorithm performs on a person wearing light coloured clothing since some of the backgrounds will have lighter elements in them. How does this compare to the dark clothing?
 
 \begin{figure}[H]
     \centering
@@ -115,7 +115,7 @@ See how well the algorithm performs on a person wearing light coloured clothing.
 
 
 \subsubsection{Person wearing a dark clothing rocking back and forth}
-See how well the algorithm performs on a person wearing dark coloured clothing.
+See how well the algorithm performs on a person wearing dark coloured clothing, since some of the backgrounds will have darker elements in them. How does this compare to the light clothing?
 
 \begin{figure}[H]
     \centering
@@ -126,7 +126,7 @@ See how well the algorithm performs on a person wearing dark coloured clothing.
 
 
 \subsubsection{Person displaying an object in their hands}
-What does the algorithm do when the person is holding a object? 
+As we know from \autoref{sec:mlbfe}, the model is only trained on persons, but what happens if a person is holding an object, like a book? It is quite possible the \acrshort{mlbfe} is going to handle foreign objects in production. What will the \acrshort{mlbfe} do? Cut it out properly? Leave the object untouched?
 
 \begin{figure}[H]
     \centering
@@ -136,16 +136,18 @@ What does the algorithm do when the person is holding a object?
 \end{figure}
 
 
-\todo{Why are these videos chosen?}
+\todo{Why are these videos chosen? Discuss in \autoref{cha:discussion}?}
 
 \section{Measures}
 \subsection{Objective measures}
-The resulting videos from figure \ref{fig:videos}b (chroma key video) and \ref{fig:videos}d (machine learning video) will be statistically compared and reviewed. We will be using Python to retrieve the objective measures discussed in \autoref{sec:objective_measurement} for each frame. Additionally, the mean of each objective measure will be calculated for each video for an general evaluation of the video in its entirety. 
+The resulting videos from figure \ref{fig:videos}b (chroma key video) and \ref{fig:videos}d (machine learning video) will be statistically compared and reviewed head to head. The chroma key video will be our truth table, while the frame from the machine learning video will be our input. 
+
+To make the computations easier, we will convert our frames to binary images in black and white, where the background is black and the silhouette extraction is white. We will be using Python to retrieve the objective measures discussed in \autoref{sec:objective_measurement} for each frame. Additionally, the mean of each objective measure will be calculated for each video for an general evaluation of the video in its entirety. The developed code can be found in \autoref{cha:appendix-github}.
 
 
 
 \subsection{Subjective measures}
-A group of participants will be given a questionnaire to collect the subjective measures of the quality of the resulting videos from the \acrshort{mlbfe} processed videos presented in \autoref{fig:videos}d. The questionnaire will map the demographic to map the age, gender, education and occupation. Afterwards, they will be asked some questions for each video. The questions, with answers, are listed in \autoref{tab:q1}, \autoref{tab:q2} and \autoref{tab:q1}.
+A group of participants will be given a questionnaire to collect the subjective measures of the quality of the resulting videos from the \acrshort{mlbfe} processed videos presented in \autoref{fig:videos}d. The questionnaire will map the demographic to map the age, gender, education and occupation, to see the coverage of low level human influencing factors and to see our representation of people. Afterwards, they will be asked some questions for each video. The questions, with answers, are listed in \autoref{tab:q1}, \autoref{tab:q2} and \autoref{tab:q1}.
 
 \begin{table}[H]
     \centering
@@ -156,7 +158,7 @@ A group of participants will be given a questionnaire to collect the subjective 
              \textbf{Answer} & \begin{tabular}{c} Completely satisfied \\ Very satisfied \\ Moderately satisfied \\ Slightly satisfied \\ Not at all satisfied \end{tabular} \\
          \hline
     \end{tabular}
-    \caption{Question and answers for quesiton 1}
+    \caption{Question and answers for question 1}
     \label{tab:q1}
 \end{table}
 
@@ -188,9 +190,9 @@ A group of participants will be given a questionnaire to collect the subjective 
 \end{table}
 
 
-The participants will be able to answer the questions with a five point Likert scale and also be able to add additional qualitative feedback in the end if wanted. 
+The participants will be able to answer the questions with a fitting five point Likert scale and also be able to add additional qualitative feedback in the end if wanted. 
 
-The rating will be done using Google Forms, with a final export presented in \ref{cha:appendix-questionnaire}. The videos have been implemented into the questionnaire as an unlisted YouTube video uploaded to a newly created account for the survey purpose. This has been done to prevent any targeted recommendations and other recommendations provided by the YouTube algorithms. 
+The rating will be done using Google Forms. An export of the questionnaire is presented in \autoref{cha:appendix-questionnaire}. The videos have been implemented into the questionnaire as an unlisted YouTube video uploaded to a newly created account for the survey purpose. This has been done to prevent any targeted recommendations and other recommendations provided by the YouTube algorithms. 
 
 The order of the videos presented in the questionnaire was decided by a shuffling the order of the videos through a randomising function, with the final order presented in \autoref{tab:order}. This was done to prevent the participants to see the same foreground videos after one another. Using this setup, we will be able to test on a lot of participants, which hopefully will yield a more fair and even result. 
 
@@ -210,7 +212,7 @@ The order of the videos presented in the questionnaire was decided by a shufflin
 \section{Hardware}\label{sec:hardware}
 \begin{table}[H]
     \centering
-    \begin{tabular}{||p{2cm}|p{2cm}|p{4cm}| p{3cm}||} 
+    \begin{tabular}{|p{2cm}|p{1.5cm}|p{3.5cm}|p{3cm}|} 
          \hline
          \textbf{What} & \textbf{Model} & \textbf{Specifications} & \textbf{Comment} \\ [0.5ex] 
          \hline\hline
