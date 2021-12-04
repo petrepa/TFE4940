@@ -3,41 +3,45 @@
 %
 \textcolor{red}{The results chapter should simply present the results of applying the methods presented in the method chapter without further ado. This chapter will typically contain many graphs, tables, etc. Sometimes it is natural to discuss the results as they are presented, combining them into a `Results and Discussion' chapter, but more often they are kept separate.}
 
-This chapter will be used to look at the results from the objective and subjective measures and compare these against each other. There was a total of \textbf{NumOfParticipants} \todo{Add number of participants} participants which answered the subjective questionnaire. Figure \ref{fig:age} shows the age distribution of the participants, while figure \ref{fig:gender} shows the gender distribution. Table \textbf{TableNumber}\todo{Add correct reference once table is inserted} shows what type of occupation the participants had. 
+This chapter will be used to look at the results from the objective and subjective measures and compare these against each other. There were a total of 54 participants which answered the subjective questionnaire. \autoref{fig:age} shows the age distribution of the participants, while \autoref{fig:gender} shows the gender distribution. \autoref{fig:occupation} and \autoref{fig:education} shows what type of occupation and education the participants had. 
 
-For the statistical measures we plotted each of the questions to each video in histograms, along with error bars giving the standard deviation of the data set. The standard deviation was used to check the spread and variability of the data. We further looked at the histogram data manually to gather information from the result, but also checked for any statistical significant differences in the data. Since our data was not normally distributed, we went for a \textit{Mann-Whitney U test} \cite{wiki_mann-whitney}. From this we can use the p-value to decide on a statistical significance. 
+For the statistical measures we plotted each of the questions to each video in histograms, along with error bars giving the standard deviation of the data set. The standard deviation was used to check the spread and variability of the data. We further looked at the histogram data manually to gather information from the result, as well as presenting the mean score, percentage of full score and the standard deviation in a table for easier evaluation and comparison against the objective measures.
 
 \begin{figure}
 \centering
 \begin{minipage}{.5\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{img/Plots/pre/plot_age.png}
+  \includegraphics[width=\linewidth]{img/subjective_measures/demographic/age_plot .pdf}
   \captionof{figure}{Age Distribution}
   \label{fig:age}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{img/Plots/pre/plot_gender.png}
+  \includegraphics[width=\linewidth]{img/subjective_measures/demographic/gender_plot.pdf}
   \captionof{figure}{Gender Distribution}
   \label{fig:gender}
 \end{minipage}
 \end{figure}
 
-\todo{Insert table of occupations}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{img/subjective_measures/demographic/education.pdf}
+  \captionof{figure}{Education Distribution}
+  \label{fig:education}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{img/subjective_measures/demographic/occupations.pdf}
+  \captionof{figure}{Occupation Distribution}
+  \label{fig:occupation}
+\end{minipage}
+\end{figure}
+
+
 \input{tex/004-results}
 
 \subsection{Qualitative Feedback}
-The participants were able to provide some additional feedback at the end of the questionnaire if they wanted to. The comments were as follows:
-\begin{table}[H]
-    \centering
-    \begin{tabular}{p{12cm}} 
-        \hline
-        \lipsum[2] \\
-        \hline
-        \lipsum[2] \\
-        \hline
-    \end{tabular}
-    \caption{Qualitative feedback from participants}
-    \label{tab:comments}
-\end{table}
-\todo{Fill in comments}
+The participants were able to provide some additional feedback at the end of the questionnaire if they wanted to. The comments can be found in \autoref{cha:appendix-qualitative}.

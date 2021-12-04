@@ -24,5 +24,28 @@
     \item A little explanation of ''artefact'' was added to the first video question after some feedback on some words being hard to understand
     \item Web survey vs physical survey
     \item Influencing factors for participants
+    \item Dice VS IoU
+    \item Some of the worst subjective results yielded the best objective tests
+    \item Was there any difference in the dark vs light clothing?
+    \item What did the \acrshort{mlbfe} do with the object? Cut it? Leave it? 
     
 \end{itemize}
+
+\section{Results}\label{sec:disc_results}
+By studying the results from \autoref{cha:results} we see some interesting findings. Let's discuss some of them.
+
+When we take a look at the first question of the subjective rating ("How satisfied are you with the quality of the silhouette extraction?") we see that video 4, 5 and 10 had the overall worst rating. The same applies for question 2 ("Did you notice any artefacts with the silhouette extraction?") and 3 ("Do you think the artefacts were annoying?")
+
+We can also see that the three best videos from question 1, video 6, 9 and 12, also were the clear winners with the lowest level of noticeable artefacts and level of annoyance. While these videos were the clear winners from the subjective tests, it is not mirrored in the objective tests. 
+
+Video 3 had the best objective score, but it was not popular in the subjective score. When we analyse this specific video closer we see what this might come from. This video has a few single bad frames with bad segmentation. While the objective scores does not penalise the single bad frames that much, it seems to be really annoying to watch for humans. Humans see these bad single frames as clear glitches and errors in the video. Some of the highest annoyance levels came from the videos with the best objective scores. 
+
+The videos with the white wall performed overall better than all of the other backgrounds for the subjective measures, as expected (video 3, 6, 9 and 12). This is not the case for the objective measures, as there seems to be no clear pattern in which videos perform better than other. Sometimes the white wall background performed the best (video 3), and sometimes the window background performed the best (video 5 and 8).
+
+Video 1, 2 and 3, where the person was showing an object, had almost the same rating for in the case of the subjective ratings. This was unrelated of the background. The results were not the worst either.
+
+The levels of noticeable artefacts seems to be pretty linear with the level of annoyance for each video. There were no extreme cases where the participants thought the level of artefacts did not impact the perceived quality of the silhouette extraction.
+
+We also notice something interesting with the dark and light clothing. The dark clothing, video 4, 5 and 6, got a overall much better rating objectively than the white clothing. But, when we look at the subjective rating, the light clothing got a much better score. One final interesting note, is that the dark and light clothing performed almost equally good objectively with the white wall background (video 5 and 8).
+
+As far as we can see, there is no clear connection between the objective measures and the subjective measures, meaning none of our supporting hypothesis of our research questions were correct. The best subjectively rated videos, was overall not greatly rated objectively and vice versa.
