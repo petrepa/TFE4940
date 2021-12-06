@@ -21,7 +21,7 @@ Doing this using the available technology is hard because of the technical chall
 \end{figure}
 
 
-An important aspect of this technology is to make it look like the participant is in the studio, and to make it look like the participant is in the studio, the participant has to be extracted out of its own environment and inserted naturally into the studio environment. That's why we will take a look at the machine learning silhouette extraction module currently used in the AdMiRe project. We will try to evaluate the quality of experience and generally assess the quality of the technology by running some objective and subjective tests on the silhouette extraction. 
+An important aspect of this technology is to make it look like the participant is in the studio, and to make it look like the participant is in the studio, the participant has to be extracted out of its own environment and inserted naturally into the studio environment. That's why we will take a look at the machine learning silhouette extraction module currently used in the AdMiRe project. We will try to evaluate the quality of experience and generally assess the quality of the technology by running some subjective and objective tests on the silhouette extraction and see if there is any correlation between them. 
 
 
 \subsection{\acrlong{mlbfe}}\label{sec:mlbfe}
@@ -40,7 +40,7 @@ A U-Net architecture is a pipeline of compressions, using pooling layers, and de
 \end{figure}
 
 \subsubsection{MobileNetV2}\label{sec:mobilnet}
-MobileNetV2 is an improvement \cite{sandler2019mobilenetv2} of the original MobileNet \cite{howard2017mobilenets}. MobileNet is a lightweight architecture satiable for low computational power use cases using depth-wise separable convolution. 
+MobileNetV2 is an improvement \cite{sandler2019mobilenetv2} of the original MobileNet \cite{howard2017mobilenets}. MobileNet is a lightweight architecture suitable for low computational power use cases using depth-wise separable convolution. 
 
 MobileNetV2 was introduced to improve the performance. It did this by including some changes to the structure of the convolution layers with the introduced a point wise convolution layer with a linearity to the beginning of the layers \cite{vision_based}. Each layer also has a ReLU and a residual bottleneck connection is used to reduce the input size. ReLUs, Rectified Linear Units, is an  activation function which is zero in the negative dimension, but linear in the positive. A simplified illustration of the architecture of the MobileNetV2 model can be found in \autoref{fig:mobnetv2}.
 
@@ -61,14 +61,15 @@ With the combination of the two methods discussed in \autoref{sec:unet} and \aut
   \label{fig:mobilenet-unet}
 \end{figure}
 
-\subsubsection{Training, validation and testing}
+\subsubsection{Training, validation and testing}\label{sec:training}
 The learning architecture of the model is based on the model used in \cite{bmshj2018}, with a optimisation for \acrfull{ssim}. \acrshort{ssim} is a method for predicting the perceived quality of digital signals where degradation is viewed as perceived change in structural information. The Multi Scale version is conducted over multiple samples, with multiple stages of sub-sampling \cite{mssssim}. The architecture is further using the pre-trained models available from TenserFlows Compression \cite{tensorflow_compression}.
 
 The model has been trained, validated and tested with the human segmentation data set presented in \cite{gmnu21}. In this data set, humans have been set as foreground, while the rest of the frame is set as the background. Using this data set, the model has been trained on semantic segmentation of humans with object removal, in this case being the entire background
 
 
-\section{Previous work}
+\section{Previous work}\label{sec:previous}
 
+\textit{Some of the following is taken from \cite{prp} and have been adapted to the fit this report.}
 \subsection{Quality of Experience}
 \label{sec:qoe}
 QUALINET white papers defines Quality of Experience as following \cite{book_QoE}
@@ -85,7 +86,7 @@ There are a number of influencing factors in regards of the general Quality of E
     \item \textbf{System influencing factors} (SIF) which is the technical elements in role. The type of content being consumed, what kind of media (meaning factors such as encoding, resolution, sample rate), network constrains (e.g. bandwidth, delay and jitter) and device differences (e.g. different screen sizes, resolutions, frame rate and audio quality)
     \item \textbf{Context influencing factors} (CIF) are the surrounding factors which affects the user. The physical location (e.g. lighting and surrounding space), social relationships (e.g. inter-personal relationships), type of task, interruptions, time of day, how many times the user has been using these type of systems before and more technical contextual challenges (e.g. a system which has to work together with other separate systems) are all influencing aspects.
 \end{itemize}
-\todo{Part from project thesis. What do we do about it? Rewrite? Declare its origin?}
+
 
 \subsection{Semantic Segmentation}
 When doing semantic segmentation, we mean assigning each pixels in an image a semantic class label \cite{csurka2013good}. Semantic segmentation has several use cases, such as scene understanding, object removal and local class based image enhancement. The different use cases require different level of segmentation, because of their complexity. Scene understanding might need a rougher segmentation, than what object removal might need. This makes semantic segmentation difficult to evaluate. What makes a good segmentation is entirely up to the use case and the success of the segmentation is measured by the success of the end application \cite{csurka2013good}.
