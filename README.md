@@ -23,11 +23,12 @@ To evaluate the quality of the machine learning based foreground extractor, we s
 [Complete report can be found here.](https://github.com/petrepa/TFE4940/blob/master/TFE4940_peterrp_final_report.pdf)
 
 ## Description
-We built a set of videos by combining a constructed foreground video, using green screen, with some background videos. 
+We built a set of videos by combining a constructed foreground video, using green screen, with some background videos. The machine learning based foreground extractor then processed the resulting video. 
 
 The videos was then rated objectively using typical measures for image semantic segmentation.
 For the subjective measures, a group of participants rated the videos giving their opinions.
 
+![GitHub-Mark-Light](https://github.com/petrepa/TFE4940/blob/main/media/images/processed_BW/FG_Counting-Fingers_BG_Window_fg/FG_Counting-Fingers_BG_Window_fg_10.jpg#gh-dark-mode-only)![GitHub-Mark-Dark](https://github.com/petrepa/TFE4940/blob/main/media/images/processed_BW/FG_Counting-Fingers_BG_Window_fg/FG_Counting-Fingers_BG_Window_fg_299.jpg#gh-light-mode-only)
 
 ## Installation
 
