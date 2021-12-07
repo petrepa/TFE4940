@@ -28,7 +28,6 @@ We built a set of videos by combining a constructed foreground video, using gree
 The videos was then rated objectively using typical measures for image semantic segmentation.
 For the subjective measures, a group of participants rated the videos giving their opinions.
 
-![GitHub-Mark-Light](https://github.com/petrepa/TFE4940/blob/main/media/images/processed_BW/FG_Counting-Fingers_BG_Window_fg/FG_Counting-Fingers_BG_Window_fg_10.jpg#gh-dark-mode-only)![GitHub-Mark-Dark](https://github.com/petrepa/TFE4940/blob/main/media/images/processed_BW/FG_Counting-Fingers_BG_Window_fg/FG_Counting-Fingers_BG_Window_fg_299.jpg#gh-light-mode-only)
 
 ## Installation
 
