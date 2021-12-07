@@ -135,8 +135,44 @@ As we know from \autoref{sec:mlbfe}, the model is only trained on persons, but w
     \label{fig:foreground_showing_object}
 \end{figure}
 
+\subsection{Final Video List}
+After the combinations of the different foregrounds and backgrounds, we get the final video list from \autoref{tab:video_list}.
 
-\todo{Why are these videos chosen? Discuss in \autoref{cha:discussion}?}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|p{4cm}|p{4cm}|} 
+         \hline
+         \textbf{Video} & \textbf{Foreground} & \textbf{Background} \\ [0.5ex] 
+         \hline\hline
+         1 & Showing Object & Complex \\
+         \hline
+         2 & Showing Object & Window \\
+         \hline
+         3 & Showing Object & White Wall \\
+         \hline
+         4 & Rocking Dark & Complex \\
+         \hline
+         5 & Rocking Dark & Window \\
+         \hline
+         6 & Rocking Dark & White Wall \\
+         \hline
+         7 & Rocking Light & Complex \\
+         \hline
+         8 & Rocking Light & Window \\
+         \hline
+         9 & Rocking Light & White Wall \\
+         \hline
+         10 & Counting Fingers & Complex \\
+         \hline
+         11 & Counting Fingers & Window \\
+         \hline
+         12 & Counting Fingers & White Wall \\
+         \hline
+    \end{tabular}
+    \caption{}
+    \label{tab:video_list}
+\end{table}
+
 
 \section{Measures}
 \subsection{Objective measures}
@@ -146,7 +182,7 @@ To make the computations easier, we will convert our frames to binary images in 
 
 
 
-\subsection{Subjective measures}
+\subsection{Subjective measures}\label{sec:system_subjective}
 A group of participants will be given a questionnaire to collect the subjective measures of the quality of the resulting videos from the \acrshort{mlbfe} processed videos presented in \autoref{fig:videos}d. The questionnaire will map the demographic to map the age, gender, education and occupation, to see the coverage of low level human influencing factors and to see our representation of people. Afterwards, they will be asked some questions for each video. The questions, with answers, are listed in \autoref{tab:q1}, \autoref{tab:q2} and \autoref{tab:q1}.
 
 \begin{table}[H]
