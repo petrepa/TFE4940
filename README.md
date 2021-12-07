@@ -22,6 +22,8 @@ To evaluate the quality of the machine learning based foreground extractor, we s
 
 [Complete report can be found here.](https://github.com/petrepa/TFE4940/blob/master/TFE4940_peterrp_final_report.pdf)
 
+[A TL;DR version of the report can be found here.](https://github.com/petrepa/TFE4940/wiki/Report-TL;DR)
+
 ## Description
 We built a set of videos by combining a constructed foreground video, using green screen, with some background videos. The machine learning based foreground extractor then processed the resulting video. 
 
