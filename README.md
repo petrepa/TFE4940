@@ -46,6 +46,6 @@ git clone git@github.com:petrepa/TFE4940.git
 Can be found in the [Wiki](https://github.com/petrepa/TFE4940/wiki)
 
 ## Contributors
-* Researcher and Developer: Peter Remøy Paulsen 👨‍🎓
+* Researcher and Developer: [Peter Remøy Paulsen](https://github.com/petrepa) 👨‍🎓
 * Supervisor: [Jordi Puig](https://www.ntnu.no/ansatte/jordi.puig)👨‍🔬
     * Overseeing supervisor: [Andrew Perkis](https://www.ntnu.edu/employees/andrew.perkis) 👨‍🏫
