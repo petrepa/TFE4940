@@ -1,6 +1,6 @@
 <h1 align="center">
-  Measuring the Quality of a<br>
-  Machine Learning Based Silhouette Extractor
+  Comparing objective and subjective measures of quality 
+  on a machine learning based foreground extractor
 </h1>
 
 <h4 align="center">TFE4940<br>Electronic Systems Design and Innovation, Master Thesis</h4>
