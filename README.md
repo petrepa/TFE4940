@@ -20,7 +20,7 @@ The AdMiRe project aims to create engaging television by
 
 To evaluate the quality of the machine learning based foreground extractor, we set up some objective and subjective measures, and took a look at if there was any correlation between these two types of measures
 
-[Complete report can be found here.](https://github.com/petrepa/TFE4940/blob/master/TFE4940_peterrp_final_report.pdf)
+[Complete report can be found here.](https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2990816)
 
 [A TL;DR version of the report can be found here.](https://github.com/petrepa/TFE4940/wiki/Report-TL;DR)
 
